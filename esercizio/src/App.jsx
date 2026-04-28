@@ -27,10 +27,10 @@ const App = function () {
 
         <Container>
           <Row xs={1} sm={2} md={3} lg={4} xl={5} xxl={6} className="justify-content-between">
-            {AllTheBooks.map((book) => {
+            {AllTheBooks.map((book, i) => {
               return (
                 <MyCard
-                  key={book.asin}
+                  key={book.asin + i}
                   asin={book.asin}
                   title={book.title}
                   img={book.img}
