@@ -3,7 +3,7 @@ import { Nav, Navbar, Container } from "react-bootstrap"
 const RestaurantNavBar = function () {
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary" data-bs-theme="dark">
         <Container fluid>
           <Navbar.Brand href="#home">Epi-Restaurant</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
