@@ -10,7 +10,7 @@ const WindowAlert = function () {
           show={show}
           variant="success"
           style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}>
-          <Alert.Heading>Bevenuto</Alert.Heading>
+          <Alert.Heading>Benvenuto</Alert.Heading>
           <p>Trova i libri che preferisci nella nostra libreria!</p>
           <hr />
           <div className="d-flex justify-content-end">
