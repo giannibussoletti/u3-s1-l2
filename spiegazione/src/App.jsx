@@ -1,6 +1,10 @@
 import "./App.css"
 
 const App = function () {
-  return <></>
+  return (
+    <>
+      <p>Ciao sono un tag p</p>
+    </>
+  )
 }
 export default App
