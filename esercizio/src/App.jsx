@@ -4,6 +4,7 @@ import MyNav from "./components/MyNav"
 import MyFooter from "./components/MyFooter"
 import books from "./assets/data/fantasy.json"
 import MyCard from "./components/Card"
+import WindowAlert from "./components/WindowAlert"
 
 const App = function () {
   return (
@@ -11,7 +12,10 @@ const App = function () {
       <header>
         <MyNav />
       </header>
-      <main className="flex-grow-1">
+      <main className="flex-grow-1 position-relative">
+        <div className="d-flex justify-content-center">
+          <WindowAlert />
+        </div>
         <Container fluid className="p-0">
           <img className="mb-5 w-100" src="../public/hero.jpg" />
         </Container>
