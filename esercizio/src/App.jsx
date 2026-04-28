@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css"
-import { Row, Container } from "react-bootstrap"
+import { Button, Row, Container } from "react-bootstrap"
 import MyNav from "./components/MyNav"
 import MyFooter from "./components/MyFooter"
 import FantasyBooks from "./assets/data/fantasy.json"
@@ -24,6 +24,7 @@ const App = function () {
         <Container fluid className="p-0">
           <img className="mb-5 w-100" src="../public/hero.jpg" />
         </Container>
+
         <Container>
           <Row xs={1} sm={2} md={3} lg={4} xl={5} xxl={6} className="justify-content-between">
             {AllTheBooks.map((book) => {
