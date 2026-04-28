@@ -2,11 +2,16 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import { Row, Container } from "react-bootstrap"
 import MyNav from "./components/MyNav"
 import MyFooter from "./components/MyFooter"
-import books from "./assets/data/fantasy.json"
+import FantasyBooks from "./assets/data/fantasy.json"
+import ScifiBooks from "./assets/data/scifi.json"
+import RomanceBooks from "./assets/data/romance.json"
+import HistoryBooks from "./assets/data/history.json"
+import HorrorBooks from "./assets/data/horror.json"
 import MyCard from "./components/Card"
 import WindowAlert from "./components/WindowAlert"
 
 const App = function () {
+  const AllTheBooks = FantasyBooks.concat(ScifiBooks, RomanceBooks, HistoryBooks, HorrorBooks)
   return (
     <div className="content-wrapper d-flex flex-column vh-100">
       <header>
@@ -21,7 +26,7 @@ const App = function () {
         </Container>
         <Container>
           <Row xs={1} sm={2} md={3} lg={4} xl={5} xxl={6} className="justify-content-between">
-            {books.map((book) => {
+            {AllTheBooks.map((book) => {
               return (
                 <MyCard
                   key={book.asin}
@@ -36,7 +41,7 @@ const App = function () {
           </Row>
         </Container>
       </main>
-      <footer>
+      <footer className="mt-4">
         <MyFooter />
       </footer>
     </div>
