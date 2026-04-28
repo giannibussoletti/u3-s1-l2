@@ -1,7 +1,6 @@
 import { Card } from "react-bootstrap"
 
 const MyCard = function (props) {
-  console.log(props)
   return (
     <div className="g-3">
       <Card className="p-0 m-0 col h-100">
