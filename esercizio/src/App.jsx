@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css"
+import { Row, Container } from "react-bootstrap"
 import MyNav from "./components/MyNav"
 import MyFooter from "./components/MyFooter"
 import books from "./assets/data/fantasy.json"
@@ -11,12 +12,11 @@ const App = function () {
         <MyNav />
       </header>
       <main className="flex-grow-1">
-        <div className="container">
-          <div className="row row-cols-6">
+        <Container>
+          <Row xs={1} sm={2} md={3} lg={4} xl={5} xxl={6} className="justify-content-between">
             {books.map((book) => {
               return (
                 <MyCard
-                  className="col"
                   key={book.asin}
                   asin={book.asin}
                   title={book.title}
@@ -26,8 +26,8 @@ const App = function () {
                 />
               )
             })}
-          </div>
-        </div>
+          </Row>
+        </Container>
       </main>
       <footer>
         <MyFooter />
