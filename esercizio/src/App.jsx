@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css"
-import { Button, Row, Container } from "react-bootstrap"
+import { Row, Container } from "react-bootstrap"
 import MyNav from "./components/MyNav"
 import MyFooter from "./components/MyFooter"
 import FantasyBooks from "./assets/data/fantasy.json"
