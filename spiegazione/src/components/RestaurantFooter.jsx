@@ -1,6 +1,8 @@
 const RestaurantFooter = function () {
   return (
-    <p style={{ backgroundColor: "#1e5ec5", color: "white" }} className="text-center m-0 py-3 fs-5">
+    <p
+      style={{ backgroundColor: "#1e5ec5", color: "white" }}
+      className="text-center m-0 py-3 fs-5 mt-4">
       EPICODE - {new Date().getFullYear()}
     </p>
   )
