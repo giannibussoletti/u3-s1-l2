@@ -25,7 +25,7 @@ class SingleBook extends Component {
           <Card.Subtitle>{this.props.genre}</Card.Subtitle>
           <Card.Text>{this.props.price}</Card.Text>
           <Card.Text>{this.props.asin}</Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Button variant="primary">Comprami</Button>
         </Card.Body>
       </Card>
     )
