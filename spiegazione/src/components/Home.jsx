@@ -3,12 +3,6 @@ import { Container, Row, Col, Carousel } from "react-bootstrap"
 const Home = function () {
   return (
     <Container>
-      <Row>
-        <Col className="text-center fw-bold mt-3">
-          <h1>Epi-Restaurant</h1>
-          <h3>Le pizze preferite dai dev</h3>
-        </Col>
-      </Row>
       <Row className="justify-content-center">
         <Col xs={12} md={8} lg={6}>
           <Carousel>
