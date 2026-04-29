@@ -33,9 +33,8 @@ class ListBook extends Component {
           </Col>
         </Row>
         <Row xs={1} sm={2} md={3} lg={4} xl={5} xxl={6} className="justify-content-between">
-          {/* Vecchio metodo */}
-
-          {/* {AllTheBooks.map((book, i) => {
+          {/* Vecchio metodo */
+          /* {AllTheBooks.map((book, i) => {
             return (
               <MyCard
                 key={book.asin + i}
@@ -47,6 +46,7 @@ class ListBook extends Component {
               />
             )
           })} */}
+
           {AllTheBooks.map((book) => (
             <MyCard book={book} />
           ))}
