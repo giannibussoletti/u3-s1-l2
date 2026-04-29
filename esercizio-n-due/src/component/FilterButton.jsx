@@ -7,7 +7,7 @@ class FilterButton extends Component {
   }
   render() {
     return (
-      <Col key={this.props.genre} className="d-flex justify-content-center gap-3">
+      <Col key={this.props.genre} className="d-flex justify-content-center px-1 mb-4 mb-sm-0">
         <Button
           variant={this.state.genreClicked ? "primary" : "secondary"}
           onClick={() => {
