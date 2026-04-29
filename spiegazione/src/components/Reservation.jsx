@@ -3,7 +3,7 @@
 // Useremo POST per salvarle
 
 import { Component } from "react"
-import { Container, Row, Col, Form, Button } from "react-bootstrap"
+import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap"
 
 // - OGNI VOLTA CHE UN COMPONENTE POSSIEDE UN INPUT FIELDS
 // CI SARÀ BISOGNO DI UNO "STATE"
@@ -30,10 +30,10 @@ class Reservation extends Component {
     reservation: {
       name: "",
       phone: "",
-      numberOfPeople: "1",
+      numberOfPeople: 0,
       smoking: false,
       dateTime: "",
-      specialRequest: "",
+      specialRequests: "",
     },
   }
   render() {
@@ -52,7 +52,39 @@ class Reservation extends Component {
         </Row>
         <Row>
           <Col xs={12}>
-            <Form>
+            <Form
+              onSubmit={(e) => {
+                e.preventDefault()
+                // ora dobbiamo solo inviare i dati all'API
+                fetch("https://striveschool-api.herokuapp.com/api/reservation", {
+                  method: "POST",
+                  body: JSON.stringify(this.state.reservation),
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                })
+                  .then((response) => {
+                    if (response.ok) {
+                      alert("Prenotazione salvata")
+                      //  Settiamo il form al suo stato iniziale resettandolo
+                      this.setState({
+                        reservation: {
+                          name: "",
+                          phone: "",
+                          numberOfPeople: "1",
+                          smoking: false,
+                          dateTime: "",
+                          specialRequest: "",
+                        },
+                      })
+                    } else {
+                      throw new Error("errore ", response.status)
+                    }
+                  })
+                  .catch((err) => {
+                    console.log("prenotazione non salvata", err)
+                  })
+              }}>
               <Form.Group className="mb-3 mt-3">
                 <Form.Label htmlFor="name">Nome e Cognome</Form.Label>
                 <Form.Control
@@ -78,6 +110,18 @@ class Reservation extends Component {
                     })
                   }}
                 />
+
+                {this.state.reservation.name === "Mario" && (
+                  <Alert className="mt-2" variant="success">
+                    Nome ok
+                  </Alert>
+                )}
+                {this.state.reservation.name.length < 4 &&
+                  this.state.reservation.name.length > 0 && (
+                    <Alert className="mt-2" variant="danger">
+                      Non valido
+                    </Alert>
+                  )}
               </Form.Group>
               <Form.Group className="mb-3 mt-3">
                 <Form.Label htmlFor="phone">Telefono</Form.Label>
