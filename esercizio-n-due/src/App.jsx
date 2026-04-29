@@ -18,7 +18,7 @@ const App = function () {
       <header>
         <MyNav />
       </header>
-      <main className="flex-grow-1 position-relative">
+      <main className="position-relative">
         <div className="d-flex justify-content-center">
           <WindowAlert />
         </div>

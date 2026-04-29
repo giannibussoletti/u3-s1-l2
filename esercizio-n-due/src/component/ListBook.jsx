@@ -9,7 +9,7 @@ class ListBook extends Component {
   }
   render() {
     return (
-      <Container className="px-0">
+      <Container>
         <Row className="mt-4">
           <Form.Control
             type="text"
@@ -21,7 +21,7 @@ class ListBook extends Component {
             }}
           />
         </Row>
-        <Row className="my-4">
+        <Row xs={1} md={5} className="my-4">
           {genre.map((genre) => {
             return <FilterButton genre={genre} />
           })}
@@ -31,7 +31,7 @@ class ListBook extends Component {
             .filter((book) => book.title.toLowerCase().includes(this.state.search.toLowerCase()))
             .map((book, i) => {
               return (
-                <Col key={book.asin + i}>
+                <Col key={book.asin + i} className="flex-grow-1">
                   <SingleBook
                     image={book.img}
                     price={book.price}
