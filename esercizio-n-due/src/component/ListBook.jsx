@@ -1,0 +1,51 @@
+import { Component } from "react"
+import SingleBook from "./SingleBook"
+import { Col, Container, Row, Form } from "react-bootstrap"
+import FilterButton from "./FilterButton"
+const genre = ["scifi", "romance", "history", "horror", "fantasy"]
+class ListBook extends Component {
+  state = {
+    search: "",
+  }
+  render() {
+    return (
+      <Container className="px-0">
+        <Row className="mt-4">
+          <Form.Control
+            type="text"
+            placeholder="Cerca un libro"
+            onChange={(e) => {
+              this.setState({
+                search: e.target.value,
+              })
+            }}
+          />
+        </Row>
+        <Row className="my-4">
+          {genre.map((genre) => {
+            return <FilterButton genre={genre} />
+          })}
+        </Row>
+        <Row xs={1} sm={2} md={3} lg={4} xl={5} xxl={6} className="justify-content-between g-3">
+          {this.props.object
+            .filter((book) => book.title.toLowerCase().includes(this.state.search.toLowerCase()))
+            .map((book, i) => {
+              return (
+                <Col key={book.asin + i}>
+                  <SingleBook
+                    image={book.img}
+                    price={book.price}
+                    title={book.title}
+                    asin={book.asin}
+                    genre={book.category}
+                  />
+                </Col>
+              )
+            })}
+        </Row>
+      </Container>
+    )
+  }
+}
+
+export default ListBook
