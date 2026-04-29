@@ -51,17 +51,53 @@ class Reservation extends Component {
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col xs={12}>
             <Form>
-              <Form.Group className="mb-3">
-                <Form.Label htmlFor="name">Nome E cognome</Form.Label>
-                <Form.Control id="name" type="text" placeholder="Mario Rossi" required />
+              <Form.Group className="mb-3 mt-3">
+                <Form.Label htmlFor="name">Nome e Cognome</Form.Label>
+                <Form.Control
+                  id="name"
+                  type="text"
+                  placeholder="Mario Rossi"
+                  required
+                  //Andiamo a collegare ora i vari inputo allo stato con un "two-way binding"
+                  //1) colleghiamo la proprieta  dell'oggetto reservation nello state al valore di inputo value
+                  value={this.state.reservation.name} // Valore iniziale "" stringa vuota
+                  // 2) facciamo in modo che ogni carattere digitato vada a riempire la value del name dell'oggetto reservation
+                  onChange={(e) => {
+                    // Questo è un eventListener che va ad ascoltare e viene invocata  ad ogni inserimento del singolo carattere nell'input
+                    // e.target.value Valore corrente dell'input
+                    // Ora dobbiamo sovrascrivere il valore di this.state.reservation.name con e.target.value
+                    this.setState({
+                      reservation: {
+                        // i tre puntini ... sono chiamati "spread operator" serve per creare mantere una copia delle altre informazioni dell'oggetto in quello che viene aggiornato
+                        ...this.state.reservation,
+                        name: e.target.value,
+                      },
+                      // andiamo a scrivere un nuovo oggetto reservation
+                    })
+                  }}
+                />
               </Form.Group>
-              <Form.Group className="mb-3">
+              <Form.Group className="mb-3 mt-3">
                 <Form.Label htmlFor="phone">Telefono</Form.Label>
-                <Form.Control id="phone" type="tel" placeholder="+391234567" required />
+                <Form.Control
+                  id="phone"
+                  type="tel"
+                  placeholder="+391234567"
+                  required
+                  value={this.state.reservation.phone}
+                  onChange={(e) =>
+                    this.setState({
+                      reservation: {
+                        ...this.state.reservation,
+                        phone: e.target.value,
+                      },
+                    })
+                  }
+                />
               </Form.Group>
-              <Form.Group className="mb-3">
+              <Form.Group className="mb-3 mt-3">
                 <Form.Label htmlFor="numberOfPeople">In quanti siete?</Form.Label>
                 <Form.Control
                   id="numberOfPeople"
@@ -70,24 +106,72 @@ class Reservation extends Component {
                   required
                   min="1"
                   max="8"
+                  value={this.state.reservation.numberOfPeople}
+                  onChange={(e) =>
+                    this.setState({
+                      reservation: {
+                        ...this.state.reservation,
+                        numberOfPeople: e.target.value,
+                      },
+                    })
+                  }
                 />
               </Form.Group>
 
-              <Form.Group className="mb-3">
-                <Form.Check type="checkbox" label="Ci sono Fumatori?" />
+              <Form.Group className="mb-3 mt-3">
+                <Form.Check
+                  type="checkbox"
+                  label="Ci sono Fumatori?"
+                  checked={this.state.reservation.smoking}
+                  onChange={(e) =>
+                    this.setState({
+                      reservation: {
+                        ...this.state.reservation,
+                        // qui usiamo checked che ritorna una booleano ("true" o "false")
+                        // la proprietà value con la checkbox riporta una stringa ("on" o "off")
+                        smoking: e.target.checked,
+                      },
+                    })
+                  }
+                />
               </Form.Group>
               <Form.Group>
                 <Form.Label htmlFor="dateTime">Data e ora</Form.Label>
-                <Form.Control id="dateTime" type="datetime-local" required />
+                <Form.Control
+                  id="dateTime"
+                  type="datetime-local"
+                  required
+                  value={this.state.reservation.dateTime}
+                  onChange={(e) =>
+                    this.setState({
+                      reservation: {
+                        ...this.state.reservation,
+                        dateTime: e.target.value,
+                      },
+                    })
+                  }
+                />
               </Form.Group>
-              <Form.Group>
-                <Form.Label htmlFor="specialRequest" className="mb-3">
+              <Form.Group className="mb-3 mt-3">
+                <Form.Label htmlFor="specialRequest">
                   {"Richieste particolari (Allergie etc..)"}
                 </Form.Label>
-                <Form.Control as="textarea" id="specialRequest" />
+                <Form.Control
+                  as="textarea"
+                  id="specialRequest"
+                  value={this.state.reservation.specialRequest}
+                  onChange={(e) =>
+                    this.setState({
+                      reservation: {
+                        ...this.state.reservation,
+                        specialRequest: e.target.value,
+                      },
+                    })
+                  }
+                />
               </Form.Group>
 
-              <Button variant="primary" type="submit">
+              <Button className="mt-3" variant="primary" type="submit">
                 Submit
               </Button>
             </Form>
