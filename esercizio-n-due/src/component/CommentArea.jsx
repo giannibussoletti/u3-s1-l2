@@ -1,7 +1,8 @@
 import { Component } from "react"
-import { Button, ListGroup } from "react-bootstrap"
+import { Button, ListGroup, Alert } from "react-bootstrap"
+import AddComment from "./AddComment"
 
-class CommentArea extends Component {
+class CommentList extends Component {
   state = {
     comment: [],
   }
@@ -26,7 +27,9 @@ class CommentArea extends Component {
           comment: comments,
         })
       })
-      .catch()
+      .catch((err) => {
+        return <Alert variant="danger">errore nella fetch: {err}</Alert>
+      })
   }
 
   deleteComments = (id) => {
@@ -57,24 +60,32 @@ class CommentArea extends Component {
 
   render() {
     return (
-      <ListGroup>
-        {this.state.comment.map((comment) => {
-          return (
-            <ListGroup.Item className="d-flex justify-content-between align-items-center">
-              <span>{comment.comment}</span>
-              <Button
-                variant="danger"
-                onClick={() => {
-                  this.deleteComments(comment._id)
-                }}>
-                🗑️
-              </Button>
-            </ListGroup.Item>
-          )
-        })}
-      </ListGroup>
+      <>
+        <ListGroup>
+          {this.state.comment.map((comment) => {
+            return (
+              <div className="my-2">
+                <ListGroup.Item
+                  value={comment._id}
+                  className="d-flex justify-content-between align-items-center">
+                  <span>{comment.comment}</span>
+                  <Button
+                    variant="danger"
+                    onClick={() => {
+                      this.deleteComments(comment._id)
+                    }}>
+                    🗑️
+                  </Button>
+                </ListGroup.Item>
+                <ListGroup.Item>Voto: {comment.rate}</ListGroup.Item>
+              </div>
+            )
+          })}
+        </ListGroup>
+        <AddComment asin={this.props.asin} />
+      </>
     )
   }
 }
 
-export default CommentArea
+export default CommentList
