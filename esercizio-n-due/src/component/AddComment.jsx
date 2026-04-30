@@ -25,7 +25,7 @@ class AddComment extends Component {
         }
       })
       .then((comments) => {
-        console.log(comments)
+        console.log("sono in comments")
         this.setState({
           comment: comments,
         })
