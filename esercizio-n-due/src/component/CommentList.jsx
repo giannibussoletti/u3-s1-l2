@@ -11,16 +11,10 @@ class CommentList extends Component {
     })
       .then((response) => {
         if (response.ok) {
-          return response.json()
+          this.props.getComments(this.props.asin)
         } else {
           throw new Error("Errore nel recupero", response.status)
         }
-      })
-      .then((comments) => {
-        console.log(comments)
-        this.setState({
-          comment: comments,
-        })
       })
       .catch((err) => {
         return <Alert variant="danger">errore nella fetch: {err}</Alert>
