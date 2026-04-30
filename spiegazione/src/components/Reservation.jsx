@@ -41,12 +41,6 @@ class Reservation extends Component {
       <Container>
         <Row>
           <Col className="text-center fw-bold mt-3">
-            <h1>Epi-Restaurant</h1>
-            <h3>Le pizze preferite dai dev</h3>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="text-center fw-bold mt-3">
             <h3>Prenota un tavolo</h3>
           </Col>
         </Row>
