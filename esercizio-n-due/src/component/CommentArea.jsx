@@ -42,10 +42,18 @@ class CommentArea extends Component {
       <>
         <ListGroup>
           {this.state.comment.map((comment) => {
-            return <CommentList value={comment._id} comment={comment} key={comment._id} /> //
+            return (
+              <CommentList
+                getComments={this.getComments}
+                asin={this.props.asin}
+                value={comment._id}
+                comment={comment}
+                key={comment._id}
+              />
+            ) //
           })}
         </ListGroup>
-        <AddComment asin={this.props.asin} />
+        <AddComment asin={this.props.asin} getComments={this.getComments} />
       </>
     )
   }

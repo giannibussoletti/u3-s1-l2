@@ -10,31 +10,6 @@ class AddComment extends Component {
     },
   }
 
-  getComments = (id) => {
-    fetch("https://striveschool-api.herokuapp.com/api/comments/" + id, {
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OWYzM2YzMmYwNDIwZDAwMTUxNTVhNjgiLCJpYXQiOjE3Nzc1NDkxMDYsImV4cCI6MTc3ODc1ODcwNn0.ayymljkRTiTsMa1RwuM16jzpr5stt4gdIysEoln-lVs",
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json()
-        } else {
-          throw new Error("Errore nel recupero", response.status)
-        }
-      })
-      .then((comments) => {
-        console.log("sono in comments")
-        this.setState({
-          comment: comments,
-        })
-      })
-      .catch((err) => {
-        return <Alert variant="danger">errore nella fetch: {err}</Alert>
-      })
-  }
-
   addComments = (comment) => {
     fetch("https://striveschool-api.herokuapp.com/api/comments/", {
       method: "POST",
@@ -56,13 +31,10 @@ class AddComment extends Component {
               elementId: "",
             },
           })
-          return response.json()
+          this.props.getComments(this.props.asin)
         } else {
           throw new Error("Errore nel recupero", response.status)
         }
-      })
-      .then((comment) => {
-        this.getComments(comment.elementId)
       })
       .catch((err) => console.log("errore di recupero" + err))
   }
