@@ -23,10 +23,10 @@ class ListBook extends Component {
         </Row>
         <Row xs={1} md={5} className="my-4">
           {genre.map((genre) => {
-            return <FilterButton genre={genre} />
+            return <FilterButton genre={genre} key={genre} />
           })}
         </Row>
-        <Row xs={1} sm={2} md={3} lg={4} xl={5} xxl={6} className="justify-content-between g-3">
+        <Row xs={1} sm={2} md={3} lg={4} className="justify-content-between g-3">
           {this.props.object
             .filter((book) => book.title.toLowerCase().includes(this.state.search.toLowerCase()))
             .map((book, i) => {
