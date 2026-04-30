@@ -26,7 +26,7 @@ class ListBook extends Component {
             return <FilterButton genre={genre} key={genre} />
           })}
         </Row>
-        <Row xs={1} sm={2} md={3} lg={4} className="justify-content-between g-3">
+        <Row xs={1} sm={2} md={3} className="justify-content-between g-3">
           {this.props.object
             .filter((book) => book.title.toLowerCase().includes(this.state.search.toLowerCase()))
             .map((book, i) => {
